@@ -42,8 +42,8 @@ class Game extends Component {
     const randomQuestions = this.shuffleQuestions(answers);
     return (
       <div>
-        <h1>Game</h1>
         <Header />
+        <h1>Game</h1>
         {questions.length > 0 && (
           <div>
             <h3 data-testid="question-category">{questions[questionNumber].category}</h3>

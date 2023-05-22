@@ -1,0 +1,13 @@
+.header {
+  border: 1px solid red;
+  display: flex;
+  height: 150px;
+}
+
+.user {
+  border: 1px solid green;
+}
+
+.score {
+  border: 1px solid orchid;
+}
