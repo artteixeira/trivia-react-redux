@@ -48,7 +48,7 @@ class Game extends Component {
           <div>
             <h3 data-testid="question-category">{questions[questionNumber].category}</h3>
             <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
-            <div>
+            <div data-testid="answer-options">
               { randomQuestions.map((element, index) => {
                 if (element === questions[questionNumber]
                   .correct_answer) {
@@ -59,7 +59,7 @@ class Game extends Component {
                 return (
                   <button
                     key={ index }
-                    data-testid="wrong-answer"
+                    data-testid={ `wrong-answer-${index}` }
                   >
                     {element}
                   </button>
