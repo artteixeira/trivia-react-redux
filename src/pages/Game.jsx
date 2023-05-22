@@ -41,7 +41,7 @@ class Game extends Component {
                   .correct_answer}
               </button>
               {questions[questionNumber].incorrect_answers.map((elem, i) => (
-                <button key={ i }>{elem}</button>
+                <button key={ i } data-testid="wrong-answer">{elem}</button>
               ))}
             </div>
           </div>
