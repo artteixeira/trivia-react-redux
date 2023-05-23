@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import './CSS/Game.css';
 import Timer from '../components/Timer';
+import { updateScore } from '../redux/actions/actions';
 
 class Game extends Component {
   state = {
     questions: [],
     questionNumber: 0,
     answers: [],
+    nextButton: false,
   };
 
   componentDidMount() {
@@ -42,19 +44,35 @@ class Game extends Component {
     }
   };
 
+  addScore = () => {
+    const { score, dispatch } = this.props;
+    // valor default 10 pontos para resposta correta e timer * dificuldade a ser implementados depois
+    const correctAnswer = 10;
+    const timer = 1;
+    const dificuldade = 1;
+    const newScore = score + correctAnswer + (timer * dificuldade);
+    dispatch(updateScore(newScore));
+    this.styleBtn();
+  };
+
   styleBtn = () => {
     const elements = document.querySelectorAll('.answer');
     elements.forEach((element) => {
       if (element.classList.contains('correct-answer')) {
         element.classList.add('correct');
+        element.disabled = true;
       } else if (element.classList.contains('wrong-answer')) {
         element.classList.add('wrong');
+        element.disabled = true;
       }
+    });
+    this.setState({
+      nextButton: true,
     });
   };
 
   render() {
-    const { questions, questionNumber, answers } = this.state;
+    const { questions, questionNumber, answers, nextButton } = this.state;
     return (
       <div>
         <Header />
@@ -73,7 +91,7 @@ class Game extends Component {
                       key={ index }
                       className="answer correct-answer"
                       data-testid="correct-answer"
-                      onClick={ this.styleBtn }
+                      onClick={ this.addScore }
                     >
                       {element}
 
@@ -95,16 +113,24 @@ class Game extends Component {
 
           </div>
         )}
-
+        {nextButton ? (
+          <button data-testid="btn-next" className="btn-next">next</button>
+        ) : false}
       </div>
     );
   }
 }
 
 Game.propTypes = {
+  dispatch: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }).isRequired,
-};
+  }),
+  score: PropTypes.number,
+}.isRequired;
 
-export default connect()(Game);
+const mapStateToProps = (state) => ({
+  score: state.player.score,
+});
+
+export default connect(mapStateToProps)(Game);
