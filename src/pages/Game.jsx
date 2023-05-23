@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import './CSS/Game.css';
+import Timer from '../components/Timer';
 import { updateScore } from '../redux/actions/actions';
 
 class Game extends Component {
@@ -75,6 +76,7 @@ class Game extends Component {
     return (
       <div>
         <Header />
+        <Timer />
         <h1>Game</h1>
         {questions.length > 0 && (
           <div>
