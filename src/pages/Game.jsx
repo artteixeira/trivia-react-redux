@@ -14,8 +14,12 @@ class Game extends Component {
     this.startGame();
   }
 
+  shuffleQuestions = (array) => {
+    const randomNumber = 0.5;
+    return array.sort(() => Math.random() - randomNumber);
+  };
+
   startGame = async () => {
-    const { questionNumber } = this.state;
     const token = localStorage.getItem('token');
     const response = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
     const data = await response.json();
@@ -24,22 +28,21 @@ class Game extends Component {
       localStorage.removeItem('token');
       history.push('/');
     } else {
+      const shuffleQuestions = data.results.map((element) => {
+        const questions = [...element.incorrect_answers, element.correct_answer];
+        const shuffle = this.shuffleQuestions(questions);
+        return shuffle;
+      });
+      console.log(shuffleQuestions);
       this.setState({
         questions: data.results,
-        answers: [...data.results[questionNumber].incorrect_answers,
-          data.results[questionNumber].correct_answer],
+        answers: shuffleQuestions,
       });
     }
   };
 
-  shuffleQuestions = (array) => {
-    const randomNumber = 0.5;
-    return array.sort(() => Math.random() - randomNumber);
-  };
-
   render() {
     const { questions, questionNumber, answers } = this.state;
-    const randomQuestions = this.shuffleQuestions(answers);
     return (
       <div>
         <Header />
@@ -49,11 +52,17 @@ class Game extends Component {
             <h3 data-testid="question-category">{questions[questionNumber].category}</h3>
             <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
             <div data-testid="answer-options">
-              { randomQuestions.map((element, index) => {
+              { answers[questionNumber].map((element, index) => {
                 if (element === questions[questionNumber]
                   .correct_answer) {
                   return (
-                    <button key={ index } data-testid="correct-answer">{element}</button>
+                    <button
+                      key={ index }
+                      data-testid="correct-answer"
+                    >
+                      {element}
+
+                    </button>
                   );
                 }
                 return (
