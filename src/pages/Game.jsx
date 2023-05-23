@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
+import './CSS/Game.css';
 
 class Game extends Component {
   state = {
@@ -40,6 +41,21 @@ class Game extends Component {
       });
     }
   };
+  shuffleQuestions = (array) => {
+    const randomNumber = 0.5;
+    return array.sort(() => Math.random() - randomNumber);
+  };
+
+  styleBtn = () => {
+    const elements = document.querySelectorAll('.answer');
+    elements.forEach((element) => {
+      if (element.classList.contains('correct-answer')) {
+        element.classList.add('correct');
+      } else if (element.classList.contains('wrong-answer')) {
+        element.classList.add('wrong');
+      }
+    });
+  };
 
   render() {
     const { questions, questionNumber, answers } = this.state;
@@ -58,7 +74,9 @@ class Game extends Component {
                   return (
                     <button
                       key={ index }
+                      className="answer correct-answer"
                       data-testid="correct-answer"
+                      onClick={ this.styleBtn }
                     >
                       {element}
 
@@ -68,7 +86,9 @@ class Game extends Component {
                 return (
                   <button
                     key={ index }
+                    className="answer wrong-answer"
                     data-testid={ `wrong-answer-${index}` }
+                    onClick={ this.styleBtn }
                   >
                     {element}
                   </button>
