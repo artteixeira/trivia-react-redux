@@ -34,16 +34,11 @@ class Game extends Component {
         const shuffle = this.shuffleQuestions(questions);
         return shuffle;
       });
-      console.log(shuffleQuestions);
       this.setState({
         questions: data.results,
         answers: shuffleQuestions,
       });
     }
-  };
-  shuffleQuestions = (array) => {
-    const randomNumber = 0.5;
-    return array.sort(() => Math.random() - randomNumber);
   };
 
   styleBtn = () => {
