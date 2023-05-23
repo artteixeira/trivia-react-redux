@@ -76,10 +76,10 @@ class Game extends Component {
     return (
       <div>
         <Header />
-        <Timer />
         <h1>Game</h1>
         {questions.length > 0 && (
           <div>
+            <Timer styleBtn={ this.styleBtn } />
             <h3 data-testid="question-category">{questions[questionNumber].category}</h3>
             <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
             <div data-testid="answer-options">

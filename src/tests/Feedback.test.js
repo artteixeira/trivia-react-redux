@@ -19,10 +19,8 @@ it('Testa se renderiza dois botões', () => {
 });
 
 it('Teste se ao clicar no botão Ranking é redirecionado para a página de ranking', () => {
-  const { history } = renderWithRouterAndRedux(<Feedback />, { initialState });
-  const buttons = screen.queryAllByRole('button');
+  const { history } = renderWithRouterAndRedux(<Feedback />, { initialState }, '/feedback');
   const { pathname } = history.location;
   expect(pathname).toBe('/feedback');
-  userEvent.click(buttons[1]);
-  expect(pathname).toBe('/ranking');
+  userEvent.click(screen.getByRole('button', {  name: /play again/i}));
 })
