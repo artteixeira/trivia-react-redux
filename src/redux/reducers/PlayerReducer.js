@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   gravatarEmail: '',
 };
 
-const userReducer = (state = INITIAL_STATE, action) => {
+const PlayerReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case 'SAVE_EMAIL':
     return {
@@ -18,4 +18,4 @@ const userReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default userReducer;
+export default PlayerReducer;

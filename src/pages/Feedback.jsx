@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from '../components/Header/Header';
 
 class Feedback extends Component {
   render() {
-    const { assertions, score } = this.props;
+    const { assertions, totalScore } = this.props;
     const three = 3;
     return (
       <div>
@@ -23,18 +25,24 @@ class Feedback extends Component {
         <p
           data-testid="feedback-total-score"
         >
-          {score}
+          {totalScore}
         </p>
-        <button
-          data-testid="btn-play-again"
-          onClick={ () => {
-            const { history } = this.props;
-            history.push('/');
-          } }
-        >
-          Play Again
+        <Link to="/">
+          <button
+            data-testid="btn-play-again"
 
-        </button>
+          >
+            Play Again
+          </button>
+        </Link>
+        <Link to="/ranking">
+          <button
+            data-testid="btn-ranking"
+
+          >
+            Ranking
+          </button>
+        </Link>
       </div>
     );
   }
@@ -42,13 +50,10 @@ class Feedback extends Component {
 
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
+  totalScore: PropTypes.number.isRequired,
 };
 
-mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
   totalScore: state.player.score,
 });
