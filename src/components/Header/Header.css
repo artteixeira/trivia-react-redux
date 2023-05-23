@@ -1,13 +1,28 @@
 .header {
+  align-items: center;
   border: 1px solid red;
   display: flex;
-  height: 150px;
+  height: 100px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.header section {
+  display: flex;
 }
 
 .user {
+  align-items: center;
   border: 1px solid green;
+  display: flex;
+  padding: 10px;
 }
 
+.user p { padding: 10px;}
+
 .score {
+  align-items: center;
   border: 1px solid orchid;
+  display: flex;
+  padding: 10px;
 }
