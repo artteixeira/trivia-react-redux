@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header/Header';
 import './CSS/Game.css';
-import Timer from '../components/Header/Timer';
+import Timer from '../components/Timer';
 
 class Game extends Component {
   state = {

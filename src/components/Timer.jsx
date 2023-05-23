@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Timer extends Component {
+class Timer extends Component {
   state = {
     timeCounter: 30,
   };
