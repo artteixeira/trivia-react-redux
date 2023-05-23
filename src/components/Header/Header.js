@@ -10,17 +10,20 @@ class Header extends Component {
     const hash = md5(email).toString();
     return (
       <section className="header">
-        <div className="user">
-          <img
-            src={ `https://www.gravatar.com/avatar/${hash}` }
-            data-testid="header-profile-picture"
-            alt="Player"
-          />
-          <p data-testid="header-player-name">{name}</p>
-        </div>
-        <div className="score">
-          <span data-testid="header-score">{score}</span>
-        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Trivia.png" alt="Logo" width="200px" />
+        <section>
+          <div className="user">
+            <img
+              src={ `https://www.gravatar.com/avatar/${hash}` }
+              data-testid="header-profile-picture"
+              alt="Player"
+            />
+            <p data-testid="header-player-name">{name}</p>
+          </div>
+          <div className="score">
+            <span data-testid="header-score">{score}</span>
+          </div>
+        </section>
       </section>
     );
   }
@@ -33,9 +36,9 @@ Header.propTypes = {
 }.isRequired;
 
 const mapStateToProps = (state) => ({
-  email: state.user.gravatarEmail,
-  name: state.user.name,
-  score: state.user.score,
+  email: state.player.gravatarEmail,
+  name: state.player.name,
+  score: state.player.score,
 });
 
 export default connect(mapStateToProps)(Header);
