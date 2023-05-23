@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Timer extends Component {
   state = {
@@ -18,6 +19,7 @@ class Timer extends Component {
 
   render() {
     const { timeCounter } = this.state;
+    const { styleBtn } = this.props;
     return (
       <div>
         {timeCounter > 0 ? (
@@ -26,12 +28,14 @@ class Timer extends Component {
             {' '}
             segundos restantes
           </span>
-        ) : (
-          <span>Tempo esgotado</span>
-        )}
+        ) : (styleBtn()) }
       </div>
     );
   }
 }
+
+Timer.propTypes = {
+  styleBtn: PropTypes.func.isRequired,
+};
 
 export default Timer;
