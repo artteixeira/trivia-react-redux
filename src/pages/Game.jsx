@@ -12,6 +12,8 @@ class Game extends Component {
     questionNumber: 0,
     answers: [],
     nextButton: false,
+    endQuestions: false,
+    resetTimer: false,
   };
 
   componentDidMount() {
@@ -71,15 +73,61 @@ class Game extends Component {
     });
   };
 
+  resetStyleBtn = () => {
+    const elements = document.querySelectorAll('.answer');
+    elements.forEach((element) => {
+      if (element.classList.contains('correct-answer')) {
+        element.classList.remove('correct');
+        element.disabled = false;
+      } else if (element.classList.contains('wrong-answer')) {
+        element.classList.remove('wrong');
+        element.disabled = false;
+      }
+    });
+    this.setState({
+      nextButton: false,
+    });
+  };
+
+  handlerNextButtonClick = () => {
+    const { questionNumber, endQuestions } = this.state;
+    const { history } = this.props;
+    const maxQuestions = 3;
+    if (!endQuestions) {
+      if (questionNumber === maxQuestions) {
+        this.setState({
+          endQuestions: true, questionNumber: questionNumber + 1, resetTimer: true });
+        this.resetStyleBtn();
+      } else {
+        this.setState({ questionNumber: questionNumber + 1, resetTimer: true });
+        this.resetStyleBtn();
+      }
+    } else {
+      this.setState({ questionNumber: 0, endQuestions: false });
+      this.resetTimerFunc();
+      this.resetStyleBtn();
+      history.push('/ranking');
+    }
+  };
+
+  resetTimerFunc = () => {
+    this.setState({ resetTimer: false });
+    this.resetStyleBtn();
+  };
+
   render() {
-    const { questions, questionNumber, answers, nextButton } = this.state;
+    const { questions, questionNumber, answers, nextButton, resetTimer } = this.state;
     return (
       <div>
         <Header />
         <h1>Game</h1>
         {questions.length > 0 && (
           <div>
-            <Timer styleBtn={ this.styleBtn } />
+            <Timer
+              styleBtn={ this.styleBtn }
+              resetTimer={ resetTimer }
+              resetTimerFunc={ this.resetTimerFunc }
+            />
             <h3 data-testid="question-category">{questions[questionNumber].category}</h3>
             <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
             <div data-testid="answer-options">
@@ -114,7 +162,13 @@ class Game extends Component {
           </div>
         )}
         {nextButton ? (
-          <button data-testid="btn-next" className="btn-next">next</button>
+          <button
+            data-testid="btn-next"
+            className="btn-next"
+            onClick={ this.handlerNextButtonClick }
+          >
+            next
+          </button>
         ) : false}
       </div>
     );

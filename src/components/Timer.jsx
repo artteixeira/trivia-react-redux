@@ -7,15 +7,31 @@ class Timer extends Component {
   };
 
   componentDidMount() {
-    const time = 1000;
-    this.timer = setInterval(() => {
-      this.setState((prevState) => ({ timeCounter: prevState.timeCounter - 1 }));
-    }, time);
+    this.startTimer();
+  }
+
+  componentDidUpdate(prevProps) {
+    this.handlerCHangeToResetTimer(prevProps);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
+  handlerCHangeToResetTimer = (prevProps) => {
+    const { resetTimer, resetTimerFunc } = this.props;
+    if (prevProps.resetTimer !== resetTimer && resetTimer) {
+      this.setState({ timeCounter: 30 });
+      resetTimerFunc();
+    }
+  };
+
+  startTimer = () => {
+    const time = 1000;
+    this.timer = setInterval(() => {
+      this.setState((prevState) => ({ timeCounter: prevState.timeCounter - 1 }));
+    }, time);
+  };
 
   render() {
     const { timeCounter } = this.state;
@@ -36,6 +52,8 @@ class Timer extends Component {
 
 Timer.propTypes = {
   styleBtn: PropTypes.func.isRequired,
+  resetTimer: PropTypes.bool.isRequired,
+  resetTimerFunc: PropTypes.func.isRequired,
 };
 
 export default Timer;

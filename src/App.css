@@ -4,6 +4,11 @@ body {
   padding: 0;
 }
 
+main {
+  height: 100vh;
+  width: 100vw;
+}
+
 .App {
   text-align: center;
 }
