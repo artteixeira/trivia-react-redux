@@ -1,28 +1,67 @@
 .header {
   align-items: center;
-  border: 1px solid red;
+  background-color: rgb(180, 207, 248);
+  box-shadow: 5px 1px 4px 5px rgb(34, 148, 255);
   display: flex;
   height: 100px;
   justify-content: space-between;
   padding: 20px;
 }
 
-.header section {
+.headerPlayerInfos {
+  background-color: rgba(0, 140, 255, 0.63);
+  border-radius: 40px;
   display: flex;
+  justify-content: space-around;
+  width: 600px;
+}
+
+.headerLogo {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 140px;
+}
+
+.headerLogo img {
+  height: 80px;
+  width: 140px;
 }
 
 .user {
   align-items: center;
-  border: 1px solid green;
   display: flex;
   padding: 10px;
 }
 
-.user p { padding: 10px;}
+.user img {
+  border-radius: 50%;
+  height: 50px;
+}
+
+.user p {
+  color: rgb(0, 0, 88);
+  font-size: 20px;
+  padding: 10px;
+}
 
 .score {
   align-items: center;
-  border: 1px solid orchid;
+  color: rgb(0, 0, 88);
   display: flex;
+  justify-content: center;
   padding: 10px;
+  width: 200px;
+}
+
+.score:before {
+  content: '⭐ Pontos:';
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.scoreHeader {
+  font-size: 25px;
+  text-align: end;
 }

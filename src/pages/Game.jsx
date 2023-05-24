@@ -118,19 +118,25 @@ class Game extends Component {
   render() {
     const { questions, questionNumber, answers, nextButton, resetTimer } = this.state;
     return (
-      <div>
+      <div className="game">
         <Header />
-        <h1>Game</h1>
+        <h1 className="gameH1">Game</h1>
         {questions.length > 0 && (
-          <div>
+          <div className="gameForm">
             <Timer
               styleBtn={ this.styleBtn }
               resetTimer={ resetTimer }
               resetTimerFunc={ this.resetTimerFunc }
             />
-            <h3 data-testid="question-category">{questions[questionNumber].category}</h3>
-            <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
-            <div data-testid="answer-options">
+            <div className="question">
+              <h3
+                data-testid="question-category"
+              >
+                {questions[questionNumber].category}
+              </h3>
+              <h2 data-testid="question-text">{questions[questionNumber].question}</h2>
+            </div>
+            <div data-testid="answer-options" className="answer-options">
               { answers[questionNumber].map((element, index) => {
                 if (element === questions[questionNumber]
                   .correct_answer) {
