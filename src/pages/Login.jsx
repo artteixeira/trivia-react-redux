@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { BsGear } from 'react-icons/bs';
 import { saveEmail } from '../redux/actions/actions';
+import './CSS/Login.css';
 
 class Login extends Component {
   state = {
@@ -28,39 +30,60 @@ class Login extends Component {
     const disableBtn = regexEmail.test(email) && user.length >= MinLengthUser;
     const { history } = this.props;
     return (
-      <div>
-        Login
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={ email }
-          data-testid="input-gravatar-email"
-          onChange={ this.handleChange }
-        />
-        <input
-          type="text"
-          name="user"
-          id="user"
-          value={ user }
-          data-testid="input-player-name"
-          onChange={ this.handleChange }
-        />
-        <button
-          type="button"
-          data-testid="btn-play"
-          disabled={ !disableBtn }
-          onClick={ this.handleClick }
-        >
-          Play
-        </button>
-        <button
-          type="button"
-          data-testid="btn-settings"
-          onClick={ () => history.push('/settings') }
-        >
-          Configurações
-        </button>
+      <div className="bodyLogin">
+        <div className="formLogin">
+          <div className="logo" />
+          <div className="formLogin2">
+            Login
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="input"
+              value={ email }
+              data-testid="input-gravatar-email"
+              onChange={ this.handleChange }
+            />
+            <input
+              type="text"
+              name="user"
+              id="user"
+              className="input"
+              value={ user }
+              data-testid="input-player-name"
+              onChange={ this.handleChange }
+            />
+            <button
+              type="button"
+              className="btnPlay"
+              data-testid="btn-play"
+              disabled={ !disableBtn }
+              onClick={ this.handleClick }
+            >
+              Play
+            </button>
+            <button
+              type="button"
+              className="btnConf"
+              data-testid="btn-settings"
+              onClick={ () => history.push('/settings') }
+            >
+              <BsGear color="white" />
+            </button>
+          </div>
+        </div>
+        <div className="background">
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+          <span>?</span>
+        </div>
       </div>
     );
   }
