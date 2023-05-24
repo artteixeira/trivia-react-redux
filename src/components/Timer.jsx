@@ -4,7 +4,7 @@ import './Timer.css';
 
 class Timer extends Component {
   state = {
-    timeCounter: 9999,
+    timeCounter: 30,
   };
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class Timer extends Component {
   handlerCHangeToResetTimer = (prevProps) => {
     const { resetTimer, resetTimerFunc } = this.props;
     if (prevProps.resetTimer !== resetTimer && resetTimer) {
-      this.setState({ timeCounter: 9999 });
+      this.setState({ timeCounter: 30 });
       resetTimerFunc();
     }
   };
