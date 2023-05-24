@@ -15,7 +15,7 @@ class Feedback extends Component {
         <p
           data-testid="feedback-text"
         >
-          {assertions >= three ? 'Could be better...' : 'Well Done!'}
+          {assertions >= three ? 'Well Done!' : 'Could be better...'}
         </p>
         <p
           data-testid="feedback-total-question"

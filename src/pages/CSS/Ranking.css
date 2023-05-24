@@ -1,0 +1,19 @@
+.ranking-box {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.ranking-player {
+  align-items: center;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.ranking-player div {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}

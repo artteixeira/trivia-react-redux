@@ -5,7 +5,6 @@ import './Timer.css';
 class Timer extends Component {
   state = {
     timeCounter: 30,
-    isAnimating: true,
   };
 
   componentDidMount() {
