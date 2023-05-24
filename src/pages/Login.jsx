@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { BsGear } from 'react-icons/bs';
+import { connect } from 'react-redux';
+import validator from 'validator';
 import { saveEmail } from '../redux/actions/actions';
 import './CSS/Login.css';
 
@@ -25,9 +26,8 @@ class Login extends Component {
 
   render() {
     const { email, user } = this.state;
-    const regexEmail = /^[a-z0-9]+@[a-z0-9]+\.+[a-z0-9]{3}$/;
     const MinLengthUser = 3;
-    const disableBtn = regexEmail.test(email) && user.length >= MinLengthUser;
+    const disableBtn = validator.isEmail(email) && user.length >= MinLengthUser;
     const { history } = this.props;
     return (
       <div className="bodyLogin">
@@ -69,6 +69,7 @@ class Login extends Component {
               onClick={ () => history.push('/settings') }
             >
               <BsGear color="white" />
+              configurações
             </button>
           </div>
         </div>
