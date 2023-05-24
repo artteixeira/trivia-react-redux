@@ -16,7 +16,8 @@ const PlayerReducer = (state = INITIAL_STATE, action) => {
   case 'UPDATE_SCORE':
     return {
       ...state,
-      score: action.payload,
+      score: action.payload.newScore,
+      assertions: action.payload.newAssertions,
     };
   default:
     return state;
