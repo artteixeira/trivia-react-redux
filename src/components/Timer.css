@@ -12,12 +12,10 @@
   text-align: center;
   top: -160px;
   width: 100px;
-  z-index: 1;
 }
 
 .timeReal {
   background-color: red;
-  z-index: 1;
 }
 
 .countdown {
