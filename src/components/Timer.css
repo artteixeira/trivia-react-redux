@@ -1,18 +1,39 @@
 .timer-container {
-  height: 40px;
-  margin: auto;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 3px rgb(16, 0, 165);
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  left: -30px;
   margin-top: 100px;
+  padding: 20px;
   position: absolute;
-  right: 0;
   text-align: center;
-  top: -60px;
-  width: 40px;
+  top: -130px;
+  width: 100px;
+}
+
+.timeReal {
+  color: rgb(0, 0, 122);
+}
+
+.divRef {
+  background-color: white;
+  height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .countdown {
-  height: 40px;
-  position: relative;
-  width: 40px;
+  height: 150px;
+  left: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) translate(25px, -25px);
+  width: 150px;
 }
 
 .countdown svg {
@@ -25,11 +46,25 @@
   animation-duration: 30s;
   animation-timing-function: linear;
   fill: none;
-  stroke: rgb(190, 11, 11);
-  stroke-dasharray: 113px;
+  stroke: rgb(34, 3, 148);
+  stroke-dasharray: 251.32px;
   stroke-dashoffset: 0;
   stroke-linecap: round;
-  stroke-width: 2px;
+  stroke-width: 6px;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.countdown.countdown-an circle {
+  animation-duration: 30s;
+  animation-name: countdown;
+  animation-timing-function: linear;
+  fill: none;
+  stroke: rgb(34, 3, 148);
+  stroke-dasharray: 251.32px;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 6px;
   transform: rotate(-90deg);
   transform-origin: center;
 }
@@ -41,6 +76,17 @@
   }
 
   to {
-    stroke-dashoffset: -113px;
+    stroke-dashoffset: -251.32px;
   }
+}
+
+.timeOver {
+  color: red;
+  font-size: 50px;
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -30%);
+  width: 100%;
 }
