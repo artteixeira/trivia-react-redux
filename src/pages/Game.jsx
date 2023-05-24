@@ -164,7 +164,6 @@ class Game extends Component {
                 );
               })}
             </div>
-
           </div>
         )}
         {nextButton ? (

@@ -4,7 +4,8 @@ import './Timer.css';
 
 class Timer extends Component {
   state = {
-    timeCounter: 9999,
+    timeCounter: 30,
+    isAnimating: true,
   };
 
   componentDidMount() {
@@ -22,8 +23,9 @@ class Timer extends Component {
   handlerCHangeToResetTimer = (prevProps) => {
     const { resetTimer, resetTimerFunc } = this.props;
     if (prevProps.resetTimer !== resetTimer && resetTimer) {
-      this.setState({ timeCounter: 9999 });
+      this.setState({ timeCounter: 30 });
       resetTimerFunc();
+      this.resetAnimation();
     }
   };
 
@@ -43,29 +45,43 @@ class Timer extends Component {
         if (timeCounter === 0) {
           clearInterval(this.timer);
           resetTimerFunc();
+          this.setState({ isAnimating: true });
         }
       });
     }, time);
   };
 
+  resetAnimation = () => {
+    const num = 1;
+    const countdownElement = document.querySelector('.countdown');
+    const svgElement = countdownElement.querySelector('svg');
+    countdownElement.removeChild(svgElement);
+    setTimeout(() => {
+      countdownElement.appendChild(svgElement);
+    }, num);
+  };
+
   render() {
-    const { timeCounter } = this.state;
+    const { timeCounter, isAnimating } = this.state;
     const { styleBtn } = this.props;
     return (
       <div className="timer-container">
         <div>
-          {timeCounter > 0 ? (
-            <span className="timeReal">
-              {timeCounter}
-              {' '}
-              segundos restantes
-            </span>
-          ) : (styleBtn()) }
-        </div>
-        <div className="countdown">
-          <svg>
-            <circle r="18" cx="20" cy="20" />
-          </svg>
+          <div className="timeOver">☹</div>
+          <div className="divRef">
+            {timeCounter > 0 ? (
+              <span className="timeReal">
+                {timeCounter}
+                {' '}
+                segundos restantes
+              </span>
+            ) : (styleBtn()) }
+          </div>
+          <div className={ `countdown ${isAnimating ? 'countdown-an' : 'countdown'}` }>
+            <svg>
+              <circle r="40" cx="50" cy="50" />
+            </svg>
+          </div>
         </div>
       </div>
     );
