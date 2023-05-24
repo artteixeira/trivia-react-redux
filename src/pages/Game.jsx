@@ -47,13 +47,14 @@ class Game extends Component {
   };
 
   addScore = () => {
-    const { score, dispatch } = this.props;
+    const { score, assertions, dispatch } = this.props;
     // valor default 10 pontos para resposta correta e timer * dificuldade a ser implementados depois
     const correctAnswer = 10;
     const timer = 1;
     const dificuldade = 1;
     const newScore = score + correctAnswer + (timer * dificuldade);
-    dispatch(updateScore(newScore));
+    const newAssertions = assertions + 1;
+    dispatch(updateScore(newScore, newAssertions));
     this.styleBtn();
   };
 
@@ -191,6 +192,7 @@ Game.propTypes = {
 
 const mapStateToProps = (state) => ({
   score: state.player.score,
+  assertions: state.player.assertions,
 });
 
 export default connect(mapStateToProps)(Game);
