@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
+import logo from '../../pages/CSS/imagens/Logo.png';
 
 class Header extends Component {
   render() {
@@ -10,8 +11,10 @@ class Header extends Component {
     const hash = md5(email).toString();
     return (
       <section className="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/2/27/Trivia.png" alt="Logo" width="200px" />
-        <section>
+        <div className="headerLogo">
+          <img src={ logo } alt="Logo" />
+        </div>
+        <section className="headerPlayerInfos">
           <div className="user">
             <img
               src={ `https://www.gravatar.com/avatar/${hash}` }
@@ -21,7 +24,7 @@ class Header extends Component {
             <p data-testid="header-player-name">{name}</p>
           </div>
           <div className="score">
-            <span data-testid="header-score">{score}</span>
+            <span data-testid="header-score" className="scoreHeader">{score}</span>
           </div>
         </section>
       </section>
