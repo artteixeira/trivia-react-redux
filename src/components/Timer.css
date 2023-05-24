@@ -1,18 +1,31 @@
 .timer-container {
-  height: 40px;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
   margin: auto;
   margin-top: 100px;
+  padding: 20px;
   position: absolute;
-  right: 0;
   text-align: center;
-  top: -60px;
-  width: 40px;
+  top: -160px;
+  width: 100px;
+  z-index: 1;
+}
+
+.timeReal {
+  background-color: red;
+  z-index: 1;
 }
 
 .countdown {
   height: 40px;
-  position: relative;
+  position: absolute;
   width: 40px;
+  left: -20px;
+
 }
 
 .countdown svg {
@@ -24,8 +37,9 @@
   animation: countdown linear forwards;
   animation-duration: 30s;
   animation-timing-function: linear;
+  background-color: blueviolet;
   fill: none;
-  stroke: rgb(190, 11, 11);
+  stroke: rgb(34, 3, 148);
   stroke-dasharray: 113px;
   stroke-dashoffset: 0;
   stroke-linecap: round;

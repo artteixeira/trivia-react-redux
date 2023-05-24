@@ -55,7 +55,7 @@ class Timer extends Component {
       <div className="timer-container">
         <div>
           {timeCounter > 0 ? (
-            <span>
+            <span className="timeReal">
               {timeCounter}
               {' '}
               segundos restantes

@@ -42,6 +42,33 @@
   width: 80%;
 }
 
+.question {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
+.question h3 {
+  background-color: #001d85;
+  border-radius: 10px 10px 0 0;
+  color: var(--secondary-color);
+  padding: 10px 10px 0;
+  padding-bottom: 4px;
+  text-align: center;
+  width: 400px;
+}
+
+.question h2 {
+  background-color: #007bff;
+  border-radius: 10px;
+  color: var(--secondary-color);
+  padding: 40px;
+  text-align: center;
+  width: 85%;
+}
+
 .answer-options {
   align-items: center;
   display: flex;
