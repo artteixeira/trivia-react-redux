@@ -106,7 +106,7 @@ class Game extends Component {
       this.setState({ questionNumber: 0, endQuestions: false });
       this.resetTimerFunc();
       this.resetStyleBtn();
-      history.push('/ranking');
+      history.push('/feedback');
     }
   };
 
