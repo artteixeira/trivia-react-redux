@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import md5 from 'crypto-js/md5';
 import './CSS/Ranking.css';
 
 export default class Ranking extends Component {
@@ -9,7 +10,7 @@ export default class Ranking extends Component {
   };
 
   render() {
-    const index = 0;
+    const storage = JSON.parse(localStorage.getItem('ranking'));
     return (
       <div>
 
@@ -22,36 +23,22 @@ export default class Ranking extends Component {
           Home
         </button>
         <div className="ranking-box">
-          <div className="ranking-player">
-            <div>
-              <img src="https://xsgames.co/randomusers/assets/images/favicon.png" alt="Player" width="80px" />
-              <p data-testid={ `player-name-${index}` }>Jogador</p>
-            </div>
+          { storage.sort((a, b) => b.totalScore - a.totalScore).map((player, index) => (
+            <div className="ranking-player" key={ index }>
+              <div>
+                <img src={ `https://www.gravatar.com/avatar/${md5(player.gravatarEmail).toString()}` } alt="Player" width="80px" />
+                <p data-testid={ `player-name-${index}` }>
+                  { player.name }
+                </p>
+              </div>
 
-            <div>
-              <p data-testid={ `player-score-${index}` }>33 pontos</p>
+              <div>
+                <p data-testid={ `player-score-${index}` }>
+                  { `${player.totalScore} pontos`}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="ranking-player">
-            <div>
-              <img src="https://xsgames.co/randomusers/assets/images/favicon.png" alt="Player" width="80px" />
-              <p data-testid={ `player-name-${index}` }>Jogador</p>
-            </div>
-
-            <div>
-              <p data-testid={ `player-score-${index}` }>33 pontos</p>
-            </div>
-          </div>
-          <div className="ranking-player">
-            <div>
-              <img src="https://xsgames.co/randomusers/assets/images/favicon.png" alt="Player" width="80px" />
-              <p data-testid={ `player-name-${index}` }>Jogador</p>
-            </div>
-
-            <div>
-              <p data-testid={ `player-score-${index}` }>33 pontos</p>
-            </div>
-          </div>
+          )) }
         </div>
       </div>
     );
