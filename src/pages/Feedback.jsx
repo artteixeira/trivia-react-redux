@@ -89,7 +89,7 @@ Feedback.propTypes = {
   }).isRequired,
   name: PropTypes.string.isRequired,
   totalScore: PropTypes.number.isRequired,
-};
+}.isRequired;
 
 const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
