@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BsGear } from 'react-icons/bs';
 import { connect } from 'react-redux';
 import validator from 'validator';
-import { saveEmail } from '../redux/actions/actions';
+import { saveEmail, updateScore } from '../redux/actions/actions';
 import './CSS/Login.css';
 
 class Login extends Component {
@@ -11,6 +11,11 @@ class Login extends Component {
     email: '',
     user: '',
   };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(updateScore(0, 0));
+  }
 
   handleChange = ({ target }) => this.setState({ [target.name]: target.value });
 
