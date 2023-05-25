@@ -1,0 +1,213 @@
+:root {
+
+  --primary-color: #001d85;
+
+  --secondary-color: white;
+
+  --alternative-color: #007bff;
+
+  --text-color: #001d85;
+
+  --success-color: #0266b8;
+
+  --error-color: #ff7300;
+
+  --warning-color: #ff9307;
+
+  --winner-bkg: radial-gradient(50% 50% at 50% 50%, #5987fe 0%, #001d85 100%);
+
+  --loser-bkg: radial-gradient(50% 50% at 50% 50%, #9c6c03 0%, #010003 100%);
+
+}
+
+.Winnertrue {
+  background: var(--winner-bkg);
+  height: 100vh;
+  width: 100vw;
+}
+
+.Winnerfalse {
+  background: var(--loser-bkg);
+  height: 100vh;
+  width: 100vw;
+}
+
+.mainFeedback {
+  align-items: center;
+  display: flex;
+  height: 85vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.feedbackCard {
+  align-items: center;
+  background-color: white;
+  border-radius: 40px;
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  position: relative;
+  width: 20vw;
+}
+
+.photo-false {
+  align-items: center;
+  background-color: #ff7300;
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  position: absolute;
+  top: -50px;
+  width: 100px;
+}
+
+.photo-false img {
+  border-radius: 50%;
+}
+
+.photo-true {
+  align-items: center;
+  background-color: var(--alternative-color);
+  border-radius: 50%;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  position: absolute;
+  top: -50px;
+  width: 100px;
+}
+
+.photo-true img {
+  border-radius: 50%;
+}
+
+.btnPlayFeedback {
+  background: linear-gradient(90deg, #06c 0%, #0077b6 100%);
+  border: none;
+  border-radius: 50px;
+  bottom: 70px;
+  box-shadow: #013752 2px 4px 0 0;
+  color: white;
+  cursor: pointer;
+  font-family: Lato , sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  left: 30px;
+  padding: 10px 30px;
+  position: absolute;
+  width: 80%;
+}
+
+.btnPlayFeedback:hover {
+  background: linear-gradient(90deg, rgb(16, 122, 228) 0%, #046092 100%);
+  border: none;
+  color: white;
+  padding: 10px 35px;
+  transform: translateY(-0);
+  transition: 1000ms;
+}
+
+.btnPlayFeedback:after {
+  color: white;
+  content: '↺';
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.btnConfFeedback {
+  background: linear-gradient(90deg, rgb(204, 167, 0) 0%, #946c00 100%);
+  border: none;
+  border-radius: 50px;
+  bottom: 20px;
+  box-shadow: #523801 2px 4px 0 0;
+  color: white;
+  cursor: pointer;
+  font-family: Lato , sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  padding: 10px 30px;
+  position: absolute;
+  width: 80%;
+}
+
+.btnConfFeedback:hover {
+  background: linear-gradient(90deg, #946c00 0%, rgb(204, 167, 0) 100%);
+  border: none;
+  color: white;
+  padding: 10px 35px;
+  transform: translateY(-0);
+  transition: 1000ms;
+}
+
+.btnConfFeedback:after {
+  color: white;
+  content: '♛';
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.totalAssertions {
+  background-color: #0266b8;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  left: 20px;
+  padding: 6px;
+  position: absolute;
+  text-align: center;
+  top: 80px;
+  width: 40%;
+}
+
+.totalAssertions:before {
+  content: 'Assertions:';
+  margin-right: 4px;
+}
+
+.totalScore {
+  background-color: #0266b8;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  padding: 6px;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  top: 80px;
+  width: 40%;
+}
+
+.totalScore:before {
+  content: 'Score:';
+  margin-right: 4px;
+}
+
+.feedback-textfalse {
+  color: #946c00;
+  font-size: 25px;
+}
+
+.feedback-texttrue {
+  color: #005994;
+  font-size: 25px;
+}
+
+.areCubeHappy-true {
+  background-image: url('./imagens/happyCube.png');
+  background-size: 100% 100%;
+  height: 400px;
+  left: 420px;
+  position: absolute;
+  width: 300px;
+}
+
+.areCubeHappy-false {
+  background-image: url('./imagens/SadCube.png');
+  background-size: 100% 100%;
+  height: 350px;
+  left: 380px;
+  position: absolute;
+  width: 400px;
+}
